@@ -50,4 +50,12 @@ public class HealthUnitService {
   public List<HealthUnit> findAll() {
     return repository.findAll();
   }
+
+  public HealthUnit findByRangeCEP(Integer cep) {
+    HealthUnit unit = repository.findByRangeCEP(cep);
+    if (unit == null) {
+      throw new RuntimeException("Nenhuma unidade atende o CEP informado");
+    }
+    return unit;
+  }
 }

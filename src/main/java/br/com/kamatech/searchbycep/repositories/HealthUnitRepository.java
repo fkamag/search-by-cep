@@ -10,4 +10,6 @@ public interface HealthUnitRepository extends JpaRepository<HealthUnit, String> 
   @Query("SELECT h FROM HealthUnit h WHERE (h.initCEP <= :finalCEP AND h.finalCEP >= :initCEP) OR (h.initCEP >= :initCEP AND h.finalCEP <= :finalCEP)")
   List<HealthUnit> findHealthUnitsByCEPRange(Integer initCEP, Integer finalCEP);
 
+  @Query("SELECT h FROM HealthUnit h WHERE (h.initCEP <= :cep AND h.finalCEP >= :cep)")
+  HealthUnit findByRangeCEP(Integer cep);
 }
